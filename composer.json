@@ -1,0 +1,13 @@
+{
+  "name": "midnox-91/haushaltsplan",
+  "description": "An app to keep an overview about your outgoings",
+  "authors": [
+    {
+      "name": "Patrick Gugelsberger",
+      "email": "pgugelsberger@gmail.com"
+    }
+  ],
+  "require": {
+    "twig/twig": "^3.0"
+  }
+}

@@ -5,11 +5,28 @@ namespace Midnox\Model;
 class ProductsModel
 {
 
+    public $id;
     public $date;
     public $productName;
     public $quantity;
     public $pricePerUnit;
     public $productType;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->date = $id;
+    }
 
     /**
      * @return mixed

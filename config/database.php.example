@@ -7,6 +7,6 @@ $dbUser = "Database User";
 $dbPass = "Database Password";
 
 $pdo = new PDO(
-    "mysql:host=" . "$host;" . "dbname=" . "$dbName;" . "charset=utf8",
+    "mysql:host=$host;dbname=$dbName;charset=utf8",
     "$dbUser",
     "$dbPass");

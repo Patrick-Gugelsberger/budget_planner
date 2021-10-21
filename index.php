@@ -1,9 +1,6 @@
 <?php
-include "init.php";
+include 'init.php';
 
-//header and navbar
-include "layout/header.php";
-include "layout/navbar.php";
-
-//footer
-include "layout/footer.php";
+echo $twig->render('index.twig', array(
+    'title' => 'Startseite'
+));
