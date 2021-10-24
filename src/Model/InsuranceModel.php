@@ -2,13 +2,13 @@
 
 namespace Midnox\Model;
 
-class OtherCostsModel
+class InsuranceModel
 {
 
     public $date;
-    public $costType;
+    public $billingType;
     public $price;
-    public $quantity;
+    public $insuranceType;
 
     /**
      * @return mixed
@@ -29,17 +29,17 @@ class OtherCostsModel
     /**
      * @return mixed
      */
-    public function getCostType()
+    public function getBillingType()
     {
-        return $this->costType;
+        return $this->billingType;
     }
 
     /**
-     * @param mixed $costType
+     * @param mixed $billingType
      */
-    public function setCostType($costType)
+    public function setBillingType($billingType)
     {
-        $this->costType = $costType;
+        $this->billingType = $billingType;
     }
 
     /**
@@ -61,17 +61,18 @@ class OtherCostsModel
     /**
      * @return mixed
      */
-    public function getQuantity()
+    public function getInsuranceType()
     {
-        return $this->quantity;
+        return $this->insuranceType;
     }
 
     /**
-     * @param mixed $quantity
+     * @param mixed $insuranceType
      */
-    public function setQuantity($quantity)
+    public function setInsuranceType($insuranceType)
     {
-        $this->quantity = $quantity;
+        $this->insuranceType = $insuranceType;
     }
+
 
 }

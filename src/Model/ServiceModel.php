@@ -2,7 +2,7 @@
 
 namespace Midnox\Model;
 
-class ServicesModel
+class ServiceModel
 {
     public $date;
     public $serviceName;

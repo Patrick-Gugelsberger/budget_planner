@@ -1,9 +1,52 @@
 {% include('./header.twig') %}
 {% include('./navbar.twig') %}
 <br>
-<div class="container">
+<div class="container bg-dark text-light rounded">
     <br>
     <h1>{{ title }}</h1>
     <br>
+    <h3>Erfassung</h3>
+    <br>
+    <dl class="row">
+        <dt class="col-sm-3"><a href="product.php">Produkte</a></dt>
+        <dd class="col-sm-9">Hier werden die Kosten aller gekauften Produkte erfasst.</dd>
+
+        <dt class="col-sm-3"><a href="insurance.php">Versicherungen</a></dt>
+        <dd class="col-sm-9">Hier werden alle Versicherungskosten erfasst.</dd>
+
+        <dt class="col-sm-3"><a href="apartment.php">Wohnung</a></dt>
+        <dd class="col-sm-9">Hier werden alle Kosten rund um die Wohnung erfasst.</dd>
+
+        <dt class="col-sm-3"><a href="carCost.php">Auto</a></dt>
+        <dd class="col-sm-9">Hier werden alle Kosten rund ums Auto erfasst.</dd>
+
+        <dt class="col-sm-3"><a href="service.php">Dienstleistungen</a></dt>
+        <dd class="col-sm-9">Hier werden die Kosten aller in Anspruch genommener Dienstleistungen erfasst.</dd>
+
+        <dt class="col-sm-3"><a href="otherCost.php">Sonstige Kosten</a></dt>
+        <dd class="col-sm-9">Hier werden alle sonstigen Kosten erfasst.</dd>
+    </dl>
+    <br><br>
+    <h3>Ausgabe</h3>
+    <br>
+    <dl class="row">
+        <dt class="col-sm-3"><a href="products.php">Produkte</a></dt>
+        <dd class="col-sm-9">Hier werden die Kosten aller gekauften Produkte ausgegeben.</dd>
+
+        <dt class="col-sm-3"><a href="insurances.php">Versicherungen</a></dt>
+        <dd class="col-sm-9">Hier werden alle Versicherungskosten ausgegeben.</dd>
+
+        <dt class="col-sm-3"><a href="apartment.php">Wohnung</a></dt>
+        <dd class="col-sm-9">Hier werden alle Kosten rund um die Wohnung ausgegeben.</dd>
+
+        <dt class="col-sm-3"><a href="carCosts.php">Auto</a></dt>
+        <dd class="col-sm-9">Hier werden alle Kosten rund ums Auto ausgegeben.</dd>
+
+        <dt class="col-sm-3"><a href="services.php">Dienstleistungen</a></dt>
+        <dd class="col-sm-9">Hier werden die Kosten aller in Anspruch genommener Dienstleistungen ausgegeben.</dd>
+
+        <dt class="col-sm-3"><a href="otherCosts.php">Sonstige Kosten</a></dt>
+        <dd class="col-sm-9">Hier werden alle sonstigen Kosten ausgegeben.</dd>
+    </dl>
 </div>
 {% include('./footer.twig') %}

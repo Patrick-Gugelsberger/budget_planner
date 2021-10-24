@@ -2,13 +2,13 @@
 
 namespace Midnox\Model;
 
-class ApartmentModel
+class CarCostModel
 {
 
     public $date;
     public $costType;
+    public $pice;
     public $quantity;
-    public $pricePerUnit;
 
     /**
      * @return mixed
@@ -45,17 +45,17 @@ class ApartmentModel
     /**
      * @return mixed
      */
-    public function getPricePerUnit()
+    public function getPice()
     {
-        return $this->pricePerUnit;
+        return $this->pice;
     }
 
     /**
-     * @param mixed $pricePerUnit
+     * @param mixed $pice
      */
-    public function setPricePerUnit($pricePerUnit)
+    public function setPice($pice)
     {
-        $this->pricePerUnit = $pricePerUnit;
+        $this->pice = $pice;
     }
 
     /**

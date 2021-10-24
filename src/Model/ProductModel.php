@@ -2,7 +2,7 @@
 
 namespace Midnox\Model;
 
-class ProductsModel
+class ProductModel
 {
 
     public $id;

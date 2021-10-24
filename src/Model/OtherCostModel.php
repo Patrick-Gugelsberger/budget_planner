@@ -2,12 +2,12 @@
 
 namespace Midnox\Model;
 
-class CarCostsModel
+class OtherCostModel
 {
 
     public $date;
     public $costType;
-    public $pice;
+    public $price;
     public $quantity;
 
     /**
@@ -45,17 +45,17 @@ class CarCostsModel
     /**
      * @return mixed
      */
-    public function getPice()
+    public function getPrice()
     {
-        return $this->pice;
+        return $this->price;
     }
 
     /**
-     * @param mixed $pice
+     * @param mixed $price
      */
-    public function setPice($pice)
+    public function setPrice($price)
     {
-        $this->pice = $pice;
+        $this->price = $price;
     }
 
     /**
@@ -73,6 +73,5 @@ class CarCostsModel
     {
         $this->quantity = $quantity;
     }
-
 
 }

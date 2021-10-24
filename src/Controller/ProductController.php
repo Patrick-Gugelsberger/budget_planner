@@ -3,10 +3,9 @@
 namespace Midnox\Controller;
 
 use PDO;
-use Midnox\Model\ProductsModel as Products;
+use Midnox\Model\ProductModel as Products;
 
-
-class ProductsController
+class ProductController
 {
     public function __construct(PDO $pdo)
     {
@@ -24,7 +23,6 @@ class ProductsController
 
     public function addProducts()
     {
-
         $count = count($_POST['date']);
 
         for ($i = 0; $i < $count; $i++) {
@@ -34,7 +32,7 @@ class ProductsController
             $pricePerUnit = $_POST['pricePerUnit'][$i];
             $productType = $_POST['productType'][$i];
 
-            $sql = 'INSERT INTO products (date, productName, quantity, pricePerUnit, productType) VALUES (?,?,?,?,?)';
+            $sql = 'INSERT INTO product (date, productName, quantity, pricePerUnit, productType) VALUES (?,?,?,?,?)';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$date, $productName, $quantity, $pricePerUnit, $productType]);
         }
