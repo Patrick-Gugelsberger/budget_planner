@@ -14,7 +14,7 @@ class ProductController
 
     public function fetchProducts()
     {
-        $sql = 'SELECT * FROM products';
+        $sql = 'SELECT * FROM product';
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
 
@@ -28,13 +28,13 @@ class ProductController
         for ($i = 0; $i < $count; $i++) {
             $date = $_POST['date'][$i];
             $productName = $_POST['productName'][$i];
-            $quantity = $_POST['quantity'][$i];
-            $pricePerUnit = $_POST['pricePerUnit'][$i];
             $productType = $_POST['productType'][$i];
+            $quantity = $_POST['quantity'][$i];
+            $price = $_POST['price'][$i];
 
-            $sql = 'INSERT INTO product (date, productName, quantity, pricePerUnit, productType) VALUES (?,?,?,?,?)';
+            $sql = 'INSERT INTO product (date, productName, productType, quantity, price) VALUES (?,?,?,?,?)';
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([$date, $productName, $quantity, $pricePerUnit, $productType]);
+            $stmt->execute([$date, $productType, $productName, $quantity, $price]);
         }
     }
 }

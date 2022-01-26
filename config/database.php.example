@@ -1,12 +1,5 @@
 <?php
 
-//Replace with your Database Credentials
-$host = "hostname";
-$dbName = "Database Name";
-$dbUser = "Database User";
-$dbPass = "Database Password";
-
-$pdo = new PDO(
-    "mysql:host=$host;dbname=$dbName;charset=utf8",
-    "$dbUser",
-    "$dbPass");
+$pdo = new PDO (
+  "sqlite:"
+);

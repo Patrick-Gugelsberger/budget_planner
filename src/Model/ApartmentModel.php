@@ -8,7 +8,7 @@ class ApartmentModel
     public $date;
     public $costType;
     public $quantity;
-    public $pricePerUnit;
+    public $price;
 
     /**
      * @return mixed
@@ -45,17 +45,17 @@ class ApartmentModel
     /**
      * @return mixed
      */
-    public function getPricePerUnit()
+    public function getPrice()
     {
-        return $this->pricePerUnit;
+        return $this->price;
     }
 
     /**
-     * @param mixed $pricePerUnit
+     * @param mixed $price
      */
-    public function setPricePerUnit($pricePerUnit)
+    public function setPrice($price)
     {
-        $this->pricePerUnit = $pricePerUnit;
+        $this->price = $price;
     }
 
     /**

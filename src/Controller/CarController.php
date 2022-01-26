@@ -3,9 +3,9 @@
 namespace Midnox\Controller;
 
 use PDO;
-use Midnox\Model\ApartmentModel as Apartment;
+use Midnox\Model\CarModel as Car;
 
-class ApartmentController
+class CarController
 {
 
     public function __construct(PDO $pdo)
@@ -13,15 +13,15 @@ class ApartmentController
         $this->pdo = $pdo;
     }
 
-    public function fetchApartmentCosts()
+    public function fetchCarCosts()
     {
-        $sql = 'SELECT * FROM apartment';
+        $sql = 'SELECT * FROM car';
         $stmt->query($sql);
 
-        return $stmt->fetchAll(PDO::FETCH_CLASS, Apartment::class);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, Car::class);
     }
 
-    public function addApartmentCosts()
+    public function addCarCosts()
     {
         $count = count($_POST['date']);
 
@@ -31,7 +31,7 @@ class ApartmentController
             $quantity = $_POST['quantity'][$i];
             $price = $_POST['price'][$i];
 
-            $sql = 'INSERT INTO apartment (date, costType, quantity, price) VALUES (?,?,?,?)';
+            $sql = 'INSERT INTO car (date, costType, quantity, price) VALUES (?,?,?,?)';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$date, $costType, $quantity, $price]);
         }

@@ -7,8 +7,8 @@ class InsuranceModel
 
     public $date;
     public $billingType;
-    public $price;
     public $insuranceType;
+    public $price;
 
     /**
      * @return mixed
@@ -45,22 +45,6 @@ class InsuranceModel
     /**
      * @return mixed
      */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @param mixed $price
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getInsuranceType()
     {
         return $this->insuranceType;
@@ -72,6 +56,22 @@ class InsuranceModel
     public function setInsuranceType($insuranceType)
     {
         $this->insuranceType = $insuranceType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param mixed $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
     }
 
 
