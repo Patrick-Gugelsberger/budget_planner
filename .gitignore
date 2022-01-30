@@ -1,6 +1,4 @@
 .idea/**
-config/database.php
-config/database.db
 composer.lock
 vendor/**
 logs/**
