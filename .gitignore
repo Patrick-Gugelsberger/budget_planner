@@ -4,3 +4,4 @@ vendor/**
 logs/**
 todo.txt
 node_modules/**
+package-lock.json
