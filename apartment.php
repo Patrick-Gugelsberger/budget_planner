@@ -5,10 +5,10 @@ use Midnox\Controller\ApartmentController;
 
 $apartmentController = new ApartmentController($pdo);
 
-echo $twig->render('apartment.twig', array(
-    'title' => 'Wohnungskosten'
+echo $twig->render('record.twig', array(
+    'title' => 'Wohnung'
 ));
 
-if (isset($_POST)){
+if (!empty($_POST['date'])){
     $apartmentController->addApartmentCosts();
 }

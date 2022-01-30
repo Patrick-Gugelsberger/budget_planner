@@ -1,0 +1,9 @@
+{
+  "name": "budget_planner",
+  "description": "An app to keep an overview about your outgoings",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "chart.js": "^3.7.0"
+  }
+}

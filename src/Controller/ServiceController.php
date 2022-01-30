@@ -8,6 +8,8 @@ use Midnox\Model\ServiceModel as Service;
 class ServiceController
 {
 
+    protected PDO $pdo;
+
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
@@ -15,10 +17,10 @@ class ServiceController
 
     public function fetchServiceCosts()
     {
-        $sql = 'SELECT * FROM Service';
-        $stmt->query($sql);
+        $sql = 'SELECT * FROM service';
+        $result = $this->pdo->query($sql);
 
-        return $stmt->fetchAll(PDO::FETCH_CLASS, Service::class);
+        return $result->fetchAll(PDO::FETCH_CLASS, Service::class);
     }
 
     public function addServiceCosts()
@@ -32,8 +34,7 @@ class ServiceController
             $price = $_POST['price'][$i];
 
             $sql = 'INSERT INTO service (date, serviceName, serviceType, price) VALUES (?,?,?,?)';
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([$date, $serviceName, $serviceType, $price]);
+            $this->pdo->prepare($sql)->execute([$date, $serviceName, $serviceType, $price]);
         }
     }
 }

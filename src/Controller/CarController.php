@@ -8,17 +8,27 @@ use Midnox\Model\CarModel as Car;
 class CarController
 {
 
+    protected PDO $pdo;
+
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }
 
+    public function fetchChartData($beginDate, $endDate)
+    {
+        $sql = sprintf('SELECT costType, price FROM car WHERE date >= %s AND date <= %s', $beginDate, $endDate);
+        $result = $this->pdo->query($sql);
+
+        return $result->fetchAll(PDO::FETCH_CLASS, Car::class);
+    }
+
     public function fetchCarCosts()
     {
         $sql = 'SELECT * FROM car';
-        $stmt->query($sql);
+        $result = $this->pdo->query($sql);
 
-        return $stmt->fetchAll(PDO::FETCH_CLASS, Car::class);
+        return $result->fetchAll(PDO::FETCH_CLASS, Car::class);
     }
 
     public function addCarCosts()
@@ -32,8 +42,7 @@ class CarController
             $price = $_POST['price'][$i];
 
             $sql = 'INSERT INTO car (date, costType, quantity, price) VALUES (?,?,?,?)';
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([$date, $costType, $quantity, $price]);
+            $this->pdo->prepare($sql)->execute([$date, $costType, $quantity, $price]);
         }
     }
 }

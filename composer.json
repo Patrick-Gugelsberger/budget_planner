@@ -1,5 +1,5 @@
 {
-  "name": "midnox-91/haushaltsplan",
+  "name": "midnox-91/budget_planner",
   "description": "An app to keep an overview about your outgoings",
   "authors": [
     {
@@ -8,6 +8,7 @@
     }
   ],
   "require": {
-    "twig/twig": "^3.0"
+    "twig/twig": "^3.0",
+    "ext-pdo": "*"
   }
 }

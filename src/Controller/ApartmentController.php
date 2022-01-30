@@ -8,17 +8,27 @@ use Midnox\Model\ApartmentModel as Apartment;
 class ApartmentController
 {
 
+    protected PDO $pdo;
+
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }
 
+    public function fetchChartData($beginDate, $endDate)
+    {
+        $sql = sprintf('SELECT costType, price FROM apartment WHERE date >= %s AND date <= %s', $beginDate, $endDate);
+        $result = $this->pdo->query($sql);
+
+        return $result->fetchAll(PDO::FETCH_CLASS, Apartment::class);
+    }
+
     public function fetchApartmentCosts()
     {
         $sql = 'SELECT * FROM apartment';
-        $stmt->query($sql);
+        $result = $this->pdo->query($sql);
 
-        return $stmt->fetchAll(PDO::FETCH_CLASS, Apartment::class);
+        return $result->fetchAll(PDO::FETCH_CLASS, Apartment::class);
     }
 
     public function addApartmentCosts()
@@ -32,8 +42,7 @@ class ApartmentController
             $price = $_POST['price'][$i];
 
             $sql = 'INSERT INTO apartment (date, costType, quantity, price) VALUES (?,?,?,?)';
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([$date, $costType, $quantity, $price]);
+            $this->pdo->prepare($sql)->execute([$date, $costType, $quantity, $price]);
         }
     }
 }

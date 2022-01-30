@@ -1,0 +1,192 @@
+{% include('./header.twig') %}
+{% if title == 'Produkte' %}
+    <br>
+    <div class="container bg-dark text-light rounded">
+        <br>
+        <h1> {{ title }}</h1>
+        <br>
+        <form action="" method="post">
+            <div class="row" id="insertDbForm">
+                <div class="col-6 col-lg-2">
+                    <label for="date" class="form-label">Datum*</label>
+                    <input type="date" class="form-control" name="date[]" id="date" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="productName" class="form-label">Produkt</label>
+                    <input type="text" class="form-control" name="productName[]" id="productName" placeholder="optional">
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="productType" class="form-label">Produktart*</label>
+                    <select class="form-control" name="productType[]" id="productType" required>
+                        <option value="food">Lebensmittel</option>
+                        <option value="hygiene">Hygieneartikel</option>
+                        <option value="sweets">Süßkram</option>
+                    </select>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <label for="quantity" class="form-label">Anzahl*</label>
+                    <input type="text" class="form-control" name="quantity[]" id="quantity" required>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <label for="price" class="form-label">Kosten*</label>
+                    <input type="number" step="0.01" class="form-control" name="price[]" id="price" required>
+                </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-link col-6 col-lg-2" id="addRow">Reihe hinzufügen</button>
+            <br>
+            <br>
+            <a href="index.php"><button type="button" class="btn bg-primary text-light ">Zurück</button></a>
+            <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
+        </form>
+        <br>
+    </div>
+{% elseif title == 'Versicherungen'%}
+    <br>
+    <div class="container bg-dark text-light rounded">
+        <br>
+        <h1> {{ title }}</h1>
+        <br>
+        <form action="" method="post">
+            <div class="row" id="insertDbForm">
+                <div class="col-6 col-lg-3">
+                    <label for="date" class="form-label">Datum*</label>
+                    <input type="date" class="form-control" name="date[]" id="date" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="billingType" class="form-label">Zahlweise*</label>
+                    <select class="form-control" name="billingType[]" id="billingType" required>
+                        <option value="monthly">Monatlich</option>
+                        <option value="yearly">Jährlich</option>
+                    </select>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="insuranceType" class="form-label">Versicherung*</label>
+                    <input type="text" class="form-control" name="insuranceType[]" id="insuranceType" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="price" class="form-label">Kosten*</label>
+                    <input type="number" step="0.01" class="form-control" name="price[]" id="price" required>
+                </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-link col-6 col-lg-2" id="addRow">Reihe hinzufügen</button>
+            <br>
+            <br>
+            <a href="index.php"><button type="button" class="btn bg-primary text-light ">Zurück</button></a>
+            <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
+        </form>
+        <br>
+    </div>
+{% elseif title == 'Wohnung' %}
+    <br>
+    <div class="container bg-dark text-light rounded">
+        <br>
+        <h1> {{ title }}</h1>
+        <br>
+        <form action="" method="post">
+            <div class="row" id="insertDbForm">
+                <div class="col-6 col-lg-3">
+                    <label for="date" class="form-label">Datum*</label>
+                    <input type="date" class="form-control" name="date[]" id="date" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="costType" class="form-label">Art der Kosten*</label>
+                    <select class="form-control" name="costType[]" id="costType" required>
+                        <option value="rent">Miete</option>
+                        <option value="furniture">Einrichtung</option>
+                        <option value="otherCosts">Sonstige Wohnungskosten</option>
+                    </select>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="quantity" class="form-label">Menge*</label>
+                    <input type="text" class="form-control" name="quantity[]" id="quantity" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="price" class="form-label">Kosten*</label>
+                    <input type="number" step="0.01" class="form-control" name="price[]" id="price" required>
+                </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-link col-6 col-lg-2" id="addRow">Reihe hinzufügen</button>
+            <br>
+            <br>
+            <a href="index.php"><button type="button" class="btn bg-primary text-light ">Zurück</button></a>
+            <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
+        </form>
+        <br>
+    </div>
+{% elseif title == 'Auto' %}
+    <br>
+    <div class="container bg-dark text-light rounded">
+        <br>
+        <h1> {{ title }}</h1>
+        <br>
+        <form action="" method="post">
+            <div class="row" id="insertDbForm">
+                <div class="col-6 col-lg-3">
+                    <label for="date" class="form-label">Datum*</label>
+                    <input type="date" class="form-control" name="date[]" id="date" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="costType" class="form-label">Art der Kosten*</label>
+                    <select class="form-control" name="costType[]" id="costType" required>
+                        <option value="fuel">Benzin</option>
+                        <option value="repairs">Reparaturen</option>
+                        <option value="otherCosts">Sonstiges</option>
+                    </select>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="quantity" class="form-label">Menge*</label>
+                    <input type="text" class="form-control" name="quantity[]" id="quantity" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="price" class="form-label">Kosten*</label>
+                    <input type="number" step="0.01" class="form-control" name="price[]" id="price" required>
+                </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-link col-6 col-lg-2" id="addRow">Reihe hinzufügen</button>
+            <br>
+            <br>
+            <a href="index.php"><button type="button" class="btn bg-primary text-light ">Zurück</button></a>
+            <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
+        </form>
+        <br>
+    </div>
+{% elseif title == 'Dienstleistungen' %}
+    <br>
+    <div class="container bg-dark text-light rounded">
+        <br>
+        <h1> {{ title }}</h1>
+        <br>
+        <form action="" method="post">
+            <div class="row" id="insertDbForm">
+                <div class="col-6 col-lg-3">
+                    <label for="date" class="form-label">Datum*</label>
+                    <input type="date" class="form-control" name="date[]" id="date" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="serviceName" class="form-label">Dienstleistung*</label>
+                    <input type="text" class="form-control" name="serviceName[]" id="serviceName" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="serviceType" class="form-label">Art der Dienstleistung</label>
+                    <input type="text" class="form-control" name="serviceType[]" id="serviceType" placeholder="optional">
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="price" class="form-label">Kosten*</label>
+                    <input type="number" step="0.01" class="form-control" name="price[]" id="price" required>
+                </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-link col-6 col-lg-2" id="addRow">Reihe hinzufügen</button>
+            <br>
+            <br>
+            <a href="index.php"><button type="button" class="btn bg-primary text-light ">Zurück</button></a>
+            <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
+        </form>
+        <br>
+    </div>
+{% endif %}
+{% include('./footer.twig') %}

@@ -5,10 +5,10 @@ use Midnox\Controller\InsuranceController;
 
 $insuranceController = new InsuranceController($pdo);
 
-echo $twig->render('insurance.twig', array(
-    'title' => 'Versicherungserfassung'
+echo $twig->render('record.twig', array(
+    'title' => 'Versicherungen'
 ));
 
-if (isset($_POST)){
+if (!empty($_POST['date'])){
     $insuranceController->addInsurances();
 }

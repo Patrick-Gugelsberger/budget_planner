@@ -5,10 +5,10 @@ use Midnox\Controller\ProductController;
 
 $productController = new ProductController($pdo);
 
-echo $twig->render('product.twig', array(
-    'title' => 'Produkterfassung'
+echo $twig->render('record.twig', array(
+    'title' => 'Produkte'
 ));
 
-if (isset($_POST)){
+if (!empty($_POST['date'])){
     $productController->addProducts();
 }

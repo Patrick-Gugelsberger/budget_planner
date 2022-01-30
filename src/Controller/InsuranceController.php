@@ -7,6 +7,9 @@ use Midnox\Model\InsuranceModel as Insurance;
 
 class InsuranceController
 {
+
+    protected PDO $pdo;
+
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
@@ -15,10 +18,9 @@ class InsuranceController
     public function fetchInsurances()
     {
         $sql = 'SELECT * FROM insurance';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        $result = $this->pdo->query($sql);
 
-        return $stmt->fetchAll(PDO::FETCH_CLASS, Insurance::class);
+        return $result->fetchAll(PDO::FETCH_CLASS, Insurance::class);
     }
 
     public function addInsurances()
@@ -32,8 +34,7 @@ class InsuranceController
             $insuranceType = $_POST['insuranceType'][$i];
 
             $sql = 'INSERT INTO insurance (date, billingType, price, insuranceType) VALUES (?,?,?,?)';
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([$date, $billingType, $price, $insuranceType]);
+            $this->pdo->prepare($sql)->execute([$date, $billingType, $price, $insuranceType]);
         }
     }
 }
