@@ -13,7 +13,8 @@
                 </div>
                 <div class="col-6 col-lg-3">
                     <label for="productName" class="form-label">Produkt</label>
-                    <input type="text" class="form-control" name="productName[]" id="productName" placeholder="optional">
+                    <input type="text" class="form-control" name="productName[]" id="productName"
+                           placeholder="optional">
                 </div>
                 <div class="col-6 col-lg-3">
                     <label for="productType" class="form-label">Produktart*</label>
@@ -36,12 +37,14 @@
             <button type="button" class="btn btn-link col-6 col-lg-2" id="addRow">Reihe hinzufügen</button>
             <br>
             <br>
-            <a href="index.php"><button type="button" class="btn bg-primary text-light ">Zurück</button></a>
+            <a href="index.php">
+                <button type="button" class="btn bg-primary text-light ">Zurück</button>
+            </a>
             <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
         </form>
         <br>
     </div>
-{% elseif title == 'Versicherungen'%}
+{% elseif title == 'Versicherungen' %}
     <br>
     <div class="container bg-dark text-light rounded">
         <br>
@@ -73,7 +76,9 @@
             <button type="button" class="btn btn-link col-6 col-lg-2" id="addRow">Reihe hinzufügen</button>
             <br>
             <br>
-            <a href="index.php"><button type="button" class="btn bg-primary text-light ">Zurück</button></a>
+            <a href="index.php">
+                <button type="button" class="btn bg-primary text-light ">Zurück</button>
+            </a>
             <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
         </form>
         <br>
@@ -84,7 +89,7 @@
         <br>
         <h1> {{ title }}</h1>
         <br>
-        <form action="" method="post">
+        <form method="post">
             <div class="row" id="insertDbForm">
                 <div class="col-6 col-lg-3">
                     <label for="date" class="form-label">Datum*</label>
@@ -111,10 +116,34 @@
             <button type="button" class="btn btn-link col-6 col-lg-2" id="addRow">Reihe hinzufügen</button>
             <br>
             <br>
-            <a href="index.php"><button type="button" class="btn bg-primary text-light ">Zurück</button></a>
+            <a href="index.php">
+                <button type="button" class="btn bg-primary text-light ">Zurück</button>
+            </a>
             <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
         </form>
         <br>
+    </div>
+    <div class="container bg-dark rounded mt-2 pb-2">
+        <table class="table table-dark table-striped table-hover">
+            <thead class="">
+            <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Art der Kosten</th>
+                <th scope="col">Menge</th>
+                <th scope="col">Kosten</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for apartmentCost in apartmentCosts %}
+                <tr>
+                    <th scope="row">{{ apartmentCost.date }}</th>
+                    <th>{{ apartmentCost.costType }}</th>
+                    <th>{{ apartmentCost.quantity }}</th>
+                    <th>{{ apartmentCost.price }}</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% elseif title == 'Auto' %}
     <br>
@@ -149,7 +178,9 @@
             <button type="button" class="btn btn-link col-6 col-lg-2" id="addRow">Reihe hinzufügen</button>
             <br>
             <br>
-            <a href="index.php"><button type="button" class="btn bg-primary text-light ">Zurück</button></a>
+            <a href="index.php">
+                <button type="button" class="btn bg-primary text-light ">Zurück</button>
+            </a>
             <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
         </form>
         <br>
@@ -172,7 +203,8 @@
                 </div>
                 <div class="col-6 col-lg-3">
                     <label for="serviceType" class="form-label">Art der Dienstleistung</label>
-                    <input type="text" class="form-control" name="serviceType[]" id="serviceType" placeholder="optional">
+                    <input type="text" class="form-control" name="serviceType[]" id="serviceType"
+                           placeholder="optional">
                 </div>
                 <div class="col-6 col-lg-3">
                     <label for="price" class="form-label">Kosten*</label>
@@ -183,7 +215,9 @@
             <button type="button" class="btn btn-link col-6 col-lg-2" id="addRow">Reihe hinzufügen</button>
             <br>
             <br>
-            <a href="index.php"><button type="button" class="btn bg-primary text-light ">Zurück</button></a>
+            <a href="index.php">
+                <button type="button" class="btn bg-primary text-light ">Zurück</button>
+            </a>
             <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
         </form>
         <br>

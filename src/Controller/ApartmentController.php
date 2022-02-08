@@ -2,6 +2,7 @@
 
 namespace Midnox\Controller;
 
+use Midnox\Model\ApartmentModel;
 use PDO;
 use Midnox\Model\ApartmentModel as Apartment;
 
@@ -23,7 +24,10 @@ class ApartmentController
         return $result->fetchAll(PDO::FETCH_CLASS, Apartment::class);
     }
 
-    public function fetchApartmentCosts()
+    /**
+     * @return Apartment[]
+     */
+    public function fetchApartmentCosts(): array
     {
         $sql = 'SELECT * FROM apartment';
         $result = $this->pdo->query($sql);
@@ -31,6 +35,32 @@ class ApartmentController
         return $result->fetchAll(PDO::FETCH_CLASS, Apartment::class);
     }
 
+    /**
+     * @param array $apartments
+     * @return array
+     */
+    public function convertApartmentTypeNames(array $apartments): array
+    {
+        foreach ($apartments as $apartment) {
+            switch ($apartment->getCostType()) {
+                case 'rent':
+                    $apartment->setCostType('Miete');
+                    break;
+                case 'furniture':
+                    $apartment->setCostType('Möbel');
+                    break;
+                case 'otherCosts':
+                    $apartment->setCostType('Sonstige Kosten');
+                    break;
+            }
+        }
+
+        return $apartments;
+    }
+
+    /**
+     * @return void
+     */
     public function addApartmentCosts()
     {
         $count = count($_POST['date']);

@@ -1,5 +1,5 @@
 //add more rows to form
-
+//TODO: Fix function
 $(document).ready(function () {
     $("#addRow").click(function () {
         $('#insertDbForm').clone(true).insertAfter('#insertDbForm');

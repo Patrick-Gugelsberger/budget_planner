@@ -15,6 +15,14 @@ class InsuranceController
         $this->pdo = $pdo;
     }
 
+    public function fetchChartData($beginDate, $endDate)
+    {
+        $sql = sprintf('SELECT billingType, price FROM insurance WHERE date >= %s AND date <= %s', $beginDate, $endDate);
+        $result = $this->pdo->query($sql);
+
+        return $result->fetchAll(PDO::FETCH_CLASS, Insurance::class);
+    }
+
     public function fetchInsurances()
     {
         $sql = 'SELECT * FROM insurance';

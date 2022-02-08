@@ -15,6 +15,14 @@ class ServiceController
         $this->pdo = $pdo;
     }
 
+    public function fetchChartData($beginDate, $endDate)
+    {
+        $sql = sprintf('SELECT serviceName, price FROM service WHERE date >= %s AND date <= %s', $beginDate, $endDate);
+        $result = $this->pdo->query($sql);
+
+        return $result->fetchAll(PDO::FETCH_CLASS, Service::class);
+    }
+
     public function fetchServiceCosts()
     {
         $sql = 'SELECT * FROM service';

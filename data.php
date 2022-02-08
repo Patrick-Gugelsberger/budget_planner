@@ -18,8 +18,8 @@ $data = [];
 
 $data['apartment'] = $apartment->fetchChartData('0000-00-00', '9999-12-31');
 $data['car'] = $car->fetchChartData('0000-00-00', '9999-12-31');
-$data['insurance'] = $insurance->fetchInsurances();
+$data['insurance'] = $insurance->fetchChartData('0000-00-00', '9999-12-31');
 $data['product'] = $product->fetchChartData('0000-00-00', '9999-12-31');
-$data['service'] = $service->fetchServiceCosts();
+$data['service'] = $service->fetchChartData('0000-00-00', '9999-12-31');
 
 echo json_encode($data, JSON_NUMERIC_CHECK);
