@@ -1,4 +1,5 @@
 <?php
+
 require 'init.php';
 
 use Midnox\Controller\ApartmentController;
@@ -11,7 +12,7 @@ echo $twig->render('record.twig', array(
     'apartmentCosts' => $apartmentCosts
 ));
 
-if (!empty($_POST['date'])){
+if (!empty($_POST['date'])) {
     $apartmentController->addApartmentCosts();
     echo "<meta http-equiv='refresh' content='0'>";
 }

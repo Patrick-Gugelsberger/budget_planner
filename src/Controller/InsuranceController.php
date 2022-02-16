@@ -7,7 +7,6 @@ use Midnox\Model\InsuranceModel as Insurance;
 
 class InsuranceController
 {
-
     protected PDO $pdo;
 
     public function __construct(PDO $pdo)
@@ -29,6 +28,26 @@ class InsuranceController
         $result = $this->pdo->query($sql);
 
         return $result->fetchAll(PDO::FETCH_CLASS, Insurance::class);
+    }
+
+    /**
+     * @param array $insurances
+     *@return array
+     */
+    public function convertInsuranceTypeNames(array $insurances): array
+    {
+        foreach ($insurances as $insurance) {
+            switch ($insurance->getBillingType()) {
+                case 'monthly':
+                    $insurance->setBillingType('Monatlich');
+                    break;
+                case 'yearly':
+                    $insurance->setBillingType('Jährlich');
+                    break;
+            }
+        }
+
+        return $insurances;
     }
 
     public function addInsurances()

@@ -7,7 +7,6 @@ use Midnox\Model\CarModel as Car;
 
 class CarController
 {
-
     protected PDO $pdo;
 
     public function __construct(PDO $pdo)
@@ -23,12 +22,35 @@ class CarController
         return $result->fetchAll(PDO::FETCH_CLASS, Car::class);
     }
 
-    public function fetchCarCosts()
+    public function fetchCarCosts(): array
     {
         $sql = 'SELECT * FROM car';
         $result = $this->pdo->query($sql);
 
         return $result->fetchAll(PDO::FETCH_CLASS, Car::class);
+    }
+
+    /**
+     * @param array $cars
+     * @return array
+     */
+    public function convertCarTypeNames(array $cars): array
+    {
+        foreach ($cars as $car) {
+            switch ($car->getCostType()) {
+                case 'fuel':
+                    $car->setCostType('Benzin');
+                    break;
+                case 'repairs':
+                    $car->setCostType('Reparatur');
+                    break;
+                case 'otherCosts':
+                    $car->setCostType('Sonstige Kosten');
+                    break;
+            }
+        }
+
+        return $cars;
     }
 
     public function addCarCosts()

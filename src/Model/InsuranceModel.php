@@ -4,7 +4,6 @@ namespace Midnox\Model;
 
 class InsuranceModel
 {
-
     public $date;
     public $billingType;
     public $insuranceType;
@@ -73,6 +72,4 @@ class InsuranceModel
     {
         $this->price = $price;
     }
-
-
 }

@@ -1,14 +1,17 @@
 <?php
+
 require 'init.php';
 
 use Midnox\Controller\ServiceController;
 
 $serviceController = new ServiceController($pdo);
+$serviceCosts = $serviceController->fetchServiceCosts();
 
 echo $twig->render('record.twig', array(
-    'title' => 'Dienstleistungen'
+    'title' => 'Dienstleistungen',
+    'serviceCosts' => $serviceCosts
 ));
 
-if (!empty($_POST['date'])){
+if (!empty($_POST['date'])) {
     $serviceController->addServiceCosts();
 }

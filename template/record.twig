@@ -44,6 +44,28 @@
         </form>
         <br>
     </div>
+    <div class="container bg-dark rounded mt-2 pb-2">
+        <table class="table table-dark table-striped table-hover">
+            <thead class="">
+            <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Art der Kosten</th>
+                <th scope="col">Menge</th>
+                <th scope="col">Kosten</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for productCost in productCosts %}
+                <tr>
+                    <th scope="row">{{ productCost.date }}</th>
+                    <th>{{ productCost.productType }}</th>
+                    <th>{{ productCost.quantity }}</th>
+                    <th>{{ productCost.price }}</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% elseif title == 'Versicherungen' %}
     <br>
     <div class="container bg-dark text-light rounded">
@@ -82,6 +104,28 @@
             <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
         </form>
         <br>
+    </div>
+    <div class="container bg-dark rounded mt-2 pb-2">
+        <table class="table table-dark table-striped table-hover">
+            <thead class="">
+            <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Zahlweise</th>
+                <th scope="col">Versicherung</th>
+                <th scope="col">Kosten</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for insuranceCost in insuranceCosts %}
+                <tr>
+                    <th scope="row">{{ insuranceCost.date }}</th>
+                    <th>{{ insuranceCost.billingType }}</th>
+                    <th>{{ insuranceCost.insuranceType }}</th>
+                    <th>{{ insuranceCost.price }}</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% elseif title == 'Wohnung' %}
     <br>
@@ -185,6 +229,28 @@
         </form>
         <br>
     </div>
+    <div class="container bg-dark rounded mt-2 pb-2">
+        <table class="table table-dark table-striped table-hover">
+            <thead class="">
+            <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Art der Kosten</th>
+                <th scope="col">Menge</th>
+                <th scope="col">Kosten</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for carCost in carCosts %}
+                <tr>
+                    <th scope="row">{{ carCost.date }}</th>
+                    <th>{{ carCost.costType }}</th>
+                    <th>{{ carCost.quantity }}</th>
+                    <th>{{ carCost.price }}</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% elseif title == 'Dienstleistungen' %}
     <br>
     <div class="container bg-dark text-light rounded">
@@ -222,5 +288,36 @@
         </form>
         <br>
     </div>
+    <div class="container bg-dark rounded mt-2 pb-2">
+        <table class="table table-dark table-striped table-hover">
+            <thead class="">
+            <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Dienstleistung</th>
+                <th scope="col">Art der Dienstleistung</th>
+                <th scope="col">Kosten</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for serviceCost in serviceCosts %}
+                <tr>
+                    <th scope="row">{{ serviceCost.date }}</th>
+                    <th>{{ serviceCost.serviceName }}</th>
+                    <th>{{ serviceCost.serviceType }}</th>
+                    <th>{{ serviceCost.price }}</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endif %}
+<script>
+//Add Row to Form
+$(document).ready(function () {
+    $("#addRow").click(function () {
+        $('#insertDbForm').clone(true).insertAfter('#insertDbForm');
+        return false;
+    });
+});
+</script>
 {% include('./footer.twig') %}

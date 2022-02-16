@@ -72,6 +72,4 @@ class ServiceModel
     {
         $this->serviceType = $serviceType;
     }
-
-
 }

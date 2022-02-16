@@ -4,7 +4,6 @@ namespace Midnox\Model;
 
 class CarModel
 {
-
     public $date;
     public $costType;
     public $price;
@@ -73,6 +72,4 @@ class CarModel
     {
         $this->quantity = $quantity;
     }
-
-
 }

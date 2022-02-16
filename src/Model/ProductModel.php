@@ -4,7 +4,6 @@ namespace Midnox\Model;
 
 class ProductModel
 {
-
     public $date;
     public $productName;
     public $quantity;
@@ -90,6 +89,4 @@ class ProductModel
     {
         $this->productType = $productType;
     }
-
-
 }

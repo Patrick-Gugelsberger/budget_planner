@@ -8,7 +8,6 @@ use Midnox\Model\ApartmentModel as Apartment;
 
 class ApartmentController
 {
-
     protected PDO $pdo;
 
     public function __construct(PDO $pdo)

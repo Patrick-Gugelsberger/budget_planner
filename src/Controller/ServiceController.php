@@ -7,7 +7,6 @@ use Midnox\Model\ServiceModel as Service;
 
 class ServiceController
 {
-
     protected PDO $pdo;
 
     public function __construct(PDO $pdo)

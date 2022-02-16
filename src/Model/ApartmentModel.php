@@ -4,7 +4,6 @@ namespace Midnox\Model;
 
 class ApartmentModel
 {
-
     public $date;
     public $costType;
     public $quantity;
@@ -73,6 +72,4 @@ class ApartmentModel
     {
         $this->quantity = $quantity;
     }
-
-
 }

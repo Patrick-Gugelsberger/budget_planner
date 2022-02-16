@@ -7,7 +7,6 @@ use Midnox\Model\ProductModel as Products;
 
 class ProductController
 {
-
     protected PDO $pdo;
 
     public function __construct(PDO $pdo)
@@ -23,6 +22,29 @@ class ProductController
         return $result->fetchAll(PDO::FETCH_CLASS, Products::class);
     }
 
+    /**
+     * @param array $products
+     * @return array
+     */
+    public function convertProductTypeNames(array $products): array
+    {
+        foreach ($products as $product) {
+            switch ($product->getProductType()) {
+                case 'food':
+                    $product->setProductType('Essen');
+                    break;
+                case 'sweets':
+                    $product->setProductType('Süßigkeiten');
+                    break;
+                case 'hygiene':
+                    $product->setProductType('Hygieneprodukte');
+                    break;
+            }
+        }
+
+        return $products;
+    }
+
     public function fetchChartData($startDate, $endDate)
     {
         $sql = sprintf('SELECT productType, price FROM product WHERE date >= %s AND date <= %s', $startDate, $endDate);
@@ -33,7 +55,6 @@ class ProductController
 
     public function addProducts()
     {
-
         $count = count($_POST['date']);
 
         for ($i = 0; $i < $count; $i++) {
