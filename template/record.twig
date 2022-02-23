@@ -25,7 +25,7 @@
                     </select>
                 </div>
                 <div class="col-6 col-lg-2">
-                    <label for="quantity" class="form-label">Anzahl*</label>
+                    <label for="quantity" class="form-label">Menge*</label>
                     <input type="text" class="form-control" name="quantity[]" id="quantity" required>
                 </div>
                 <div class="col-6 col-lg-2">
@@ -48,19 +48,19 @@
         <table class="table table-dark table-striped table-hover">
             <thead class="">
             <tr>
-                <th scope="col">Datum</th>
-                <th scope="col">Art der Kosten</th>
-                <th scope="col">Menge</th>
-                <th scope="col">Kosten</th>
+                <th>Datum</th>
+                <th>Produktart</th>
+                <th>Menge</th>
+                <th>Preis</th>
             </tr>
             </thead>
             <tbody>
             {% for productCost in productCosts %}
                 <tr>
-                    <th scope="row">{{ productCost.date }}</th>
-                    <th>{{ productCost.productType }}</th>
-                    <th>{{ productCost.quantity }}</th>
-                    <th>{{ productCost.price }}</th>
+                    <td scope="row">{{ productCost.getDate }}</td>
+                    <td>{{ productCost.getProductType }}</td>
+                    <td>{{ productCost.getQuantity }}</td>
+                    <td>{{ productCost.getPrice }}</td>
                 </tr>
             {% endfor %}
             </tbody>

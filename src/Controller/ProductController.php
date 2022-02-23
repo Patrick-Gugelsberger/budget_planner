@@ -14,9 +14,12 @@ class ProductController
         $this->pdo = $pdo;
     }
 
-    public function fetchProducts()
+    /**
+     * @return products[]
+     */
+    public function fetchProducts(): array
     {
-        $sql = 'SELECT * FROM product';
+        $sql = 'SELECT * FROM product ORDER BY date limit 10';
         $result = $this->pdo->query($sql);
 
         return $result->fetchAll(PDO::FETCH_CLASS, Products::class);
@@ -45,7 +48,13 @@ class ProductController
         return $products;
     }
 
-    public function fetchChartData($startDate, $endDate)
+
+    /**
+     * @param string $startDate
+     * @param string $endDate
+     * @return array
+     */
+    public function fetchChartData(string $startDate, string $endDate):array
     {
         $sql = sprintf('SELECT productType, price FROM product WHERE date >= %s AND date <= %s', $startDate, $endDate);
         $result = $this->pdo->query($sql);
@@ -53,8 +62,10 @@ class ProductController
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function addProducts()
-    {
+    /**
+     * @return void
+     */
+    public function addProducts(): void    {
         $count = count($_POST['date']);
 
         for ($i = 0; $i < $count; $i++) {
