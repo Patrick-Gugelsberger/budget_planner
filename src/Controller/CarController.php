@@ -16,7 +16,7 @@ class CarController
 
     public function fetchChartData($beginDate, $endDate)
     {
-        $sql = sprintf('SELECT costType, price FROM car WHERE date >= %s AND date <= %s', $beginDate, $endDate);
+        $sql = sprintf('SELECT costType, quantity, price FROM car WHERE date >= %s AND date <= %s', $beginDate, $endDate);
         $result = $this->pdo->query($sql);
 
         return $result->fetchAll(PDO::FETCH_CLASS, Car::class);
@@ -59,12 +59,13 @@ class CarController
 
         for ($i = 0; $i < $count; $i++) {
             $date = $_POST['date'][$i];
+            $costName = $_POST['costName'][$i];
             $costType = $_POST['costType'][$i];
             $quantity = $_POST['quantity'][$i];
             $price = $_POST['price'][$i];
 
-            $sql = 'INSERT INTO car (date, costType, quantity, price) VALUES (?,?,?,?)';
-            $this->pdo->prepare($sql)->execute([$date, $costType, $quantity, $price]);
+            $sql = 'INSERT INTO car (date, costName, costType, quantity, price) VALUES (?,?,?,?,?)';
+            $this->pdo->prepare($sql)->execute([$date, $costName, $costType, $quantity, $price]);
         }
     }
 }

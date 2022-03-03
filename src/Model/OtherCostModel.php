@@ -2,11 +2,10 @@
 
 namespace Midnox\Model;
 
-class ApartmentModel
+class OtherCostModel
 {
     public string $date;
     public string $costName;
-    public string $costType;
     public int $quantity;
     public float $price;
     public float $total;
@@ -47,26 +46,6 @@ class ApartmentModel
     public function setCostName($costName)
     {
         $this->costName = $costName;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of costType
-     */ 
-    public function getCostType(): string
-    {
-        return $this->costType;
-    }
-
-    /**
-     * Set the value of costType
-     *
-     * @return  self
-     */ 
-    public function setCostType($costType)
-    {
-        $this->costType = $costType;
 
         return $this;
     }
@@ -116,7 +95,7 @@ class ApartmentModel
      */
     public function getTotal(): float
     {
-        return $this->price * $this->quantity;
+        return $this->quantity * $this->price;
     }
 
     /**

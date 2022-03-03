@@ -9,7 +9,5 @@ require 'autoload.php';
 require 'config/database.php';
 
 $loader = new \Twig\Loader\FilesystemLoader('./template');
-$twig = new \Twig\Environment($loader, [
-    'debug' => true,
-]);
-$twig->addExtension(new \Twig\Extension\DebugExtension());
+$twig = new \Twig\Environment($loader);
+$twig->getExtension(\Twig\Extension\CoreExtension::class)->setNumberFormat(2, ',' , '.' );

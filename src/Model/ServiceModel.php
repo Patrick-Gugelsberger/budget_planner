@@ -4,72 +4,90 @@ namespace Midnox\Model;
 
 class ServiceModel
 {
-    public $date;
-    public $serviceName;
-    public $price;
-    public $serviceType;
+    public string $date;
+    public string $serviceName;
+    public string $serviceType;
+    public float $price;
+
+   
 
     /**
-     * @return mixed
-     */
-    public function getDate()
+     * Get the value of date
+     */ 
+    public function getDate(): string
     {
         return $this->date;
     }
 
     /**
-     * @param mixed $date
-     */
+     * Set the value of date
+     *
+     * @return  self
+     */ 
     public function setDate($date)
     {
         $this->date = $date;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
-    public function getServiceName()
+     * Get the value of serviceName
+     */ 
+    public function getServiceName(): string
     {
         return $this->serviceName;
     }
 
     /**
-     * @param mixed $serviceName
-     */
+     * Set the value of serviceName
+     *
+     * @return  self
+     */ 
     public function setServiceName($serviceName)
     {
         $this->serviceName = $serviceName;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @param mixed $price
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getServiceType()
+     * Get the value of serviceType
+     */ 
+    public function getServiceType(): string
     {
         return $this->serviceType;
     }
 
     /**
-     * @param mixed $serviceType
-     */
+     * Set the value of serviceType
+     *
+     * @return  self
+     */ 
     public function setServiceType($serviceType)
     {
         $this->serviceType = $serviceType;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of price
+     */ 
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set the value of price
+     *
+     * @return  self
+     */ 
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
     }
 }

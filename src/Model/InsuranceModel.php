@@ -4,15 +4,15 @@ namespace Midnox\Model;
 
 class InsuranceModel
 {
-    public $date;
-    public $billingType;
-    public $insuranceType;
-    public $price;
+    public string $date;
+    public string $billingType;
+    public string $insuranceType;
+    public float $price;
 
     /**
      * @return mixed
      */
-    public function getDate()
+    public function getDate(): string
     {
         return $this->date;
     }
@@ -28,7 +28,7 @@ class InsuranceModel
     /**
      * @return mixed
      */
-    public function getBillingType()
+    public function getBillingType(): string
     {
         return $this->billingType;
     }
@@ -44,7 +44,7 @@ class InsuranceModel
     /**
      * @return mixed
      */
-    public function getInsuranceType()
+    public function getInsuranceType(): string
     {
         return $this->insuranceType;
     }
@@ -60,7 +60,7 @@ class InsuranceModel
     /**
      * @return mixed
      */
-    public function getPrice()
+    public function getPrice(): float
     {
         return $this->price;
     }
