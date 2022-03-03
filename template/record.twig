@@ -45,26 +45,32 @@
         <br>
     </div>
     <div class="container bg-dark rounded mt-2 pb-2">
-        <table class="table table-dark table-striped table-hover">
-            <thead class="">
-            <tr>
-                <th>Datum</th>
-                <th>Produktart</th>
-                <th>Menge</th>
-                <th>Preis</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for productCost in productCosts %}
+        <div class="table-responsive">
+            <table class="table table-dark table-striped table-hover">
+                <thead>
                 <tr>
-                    <td scope="row">{{ productCost.getDate }}</td>
-                    <td>{{ productCost.getProductType }}</td>
-                    <td>{{ productCost.getQuantity }}</td>
-                    <td>{{ productCost.getPrice }}</td>
+                    <th>Datum</th>
+                    <th>Produkt</th>
+                    <th>Produktart</th>
+                    <th>Menge</th>
+                    <th>Preis</th>
+                    <th>Gesamtpreis</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for productCost in productCosts %}
+                    <tr>
+                        <td>{{ productCost.getDate }}</td>
+                        <td>{{ productCost.getProductName }}</td>
+                        <td>{{ productCost.getProductType }}</td>
+                        <td>{{ productCost.getQuantity }}</td>
+                        <td>{{ productCost.getPrice|number_format }} €</td>
+                        <td>{{ productCost.getTotal|number_format }} €</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% elseif title == 'Versicherungen' %}
     <br>
@@ -106,26 +112,28 @@
         <br>
     </div>
     <div class="container bg-dark rounded mt-2 pb-2">
-        <table class="table table-dark table-striped table-hover">
-            <thead class="">
-            <tr>
-                <th scope="col">Datum</th>
-                <th scope="col">Zahlweise</th>
-                <th scope="col">Versicherung</th>
-                <th scope="col">Kosten</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for insuranceCost in insuranceCosts %}
+        <div class="table-responsive">
+            <table class="table table-dark table-striped table-hover">
+                <thead>
                 <tr>
-                    <th scope="row">{{ insuranceCost.date }}</th>
-                    <th>{{ insuranceCost.billingType }}</th>
-                    <th>{{ insuranceCost.insuranceType }}</th>
-                    <th>{{ insuranceCost.price }}</th>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Zahlweise</th>
+                    <th scope="col">Versicherung</th>
+                    <th scope="col">Kosten</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for insuranceCost in insuranceCosts %}
+                    <tr>
+                        <td>{{ insuranceCost.date }}</td>
+                        <td>{{ insuranceCost.billingType }}</td>
+                        <td>{{ insuranceCost.insuranceType }}</td>
+                        <td>{{ insuranceCost.price|number_format }} €</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% elseif title == 'Wohnung' %}
     <br>
@@ -135,23 +143,27 @@
         <br>
         <form method="post">
             <div class="row" id="insertDbForm">
-                <div class="col-6 col-lg-3">
+                <div class="col-6 col-lg-2">
                     <label for="date" class="form-label">Datum*</label>
                     <input type="date" class="form-control" name="date[]" id="date" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="costName" class="form-label">Name der Kosten</label>
+                    <input type="text" class="form-control" name="costName[]" id="costName" placeholder="optional">
                 </div>
                 <div class="col-6 col-lg-3">
                     <label for="costType" class="form-label">Art der Kosten*</label>
                     <select class="form-control" name="costType[]" id="costType" required>
                         <option value="rent">Miete</option>
                         <option value="furniture">Einrichtung</option>
-                        <option value="otherCosts">Sonstige Wohnungskosten</option>
+                        <option value="otherCosts">Sonstige Kosten</option>
                     </select>
                 </div>
-                <div class="col-6 col-lg-3">
+                <div class="col-6 col-lg-2">
                     <label for="quantity" class="form-label">Menge*</label>
                     <input type="text" class="form-control" name="quantity[]" id="quantity" required>
                 </div>
-                <div class="col-6 col-lg-3">
+                <div class="col-6 col-lg-2">
                     <label for="price" class="form-label">Kosten*</label>
                     <input type="number" step="0.01" class="form-control" name="price[]" id="price" required>
                 </div>
@@ -168,26 +180,32 @@
         <br>
     </div>
     <div class="container bg-dark rounded mt-2 pb-2">
-        <table class="table table-dark table-striped table-hover">
-            <thead class="">
-            <tr>
-                <th scope="col">Datum</th>
-                <th scope="col">Art der Kosten</th>
-                <th scope="col">Menge</th>
-                <th scope="col">Kosten</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for apartmentCost in apartmentCosts %}
+        <div class="table-responsive">
+            <table class="table table-dark table-striped table-hover">
+                <thead>
                 <tr>
-                    <th scope="row">{{ apartmentCost.date }}</th>
-                    <th>{{ apartmentCost.costType }}</th>
-                    <th>{{ apartmentCost.quantity }}</th>
-                    <th>{{ apartmentCost.price }}</th>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Art der Kosten</th>
+                    <th scope="col">Menge</th>
+                    <th scope="col">Kosten</th>
+                    <th scope="col">Gesamtpreis</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for apartmentCost in apartmentCosts %}
+                    <tr>
+                        <td>{{ apartmentCost.date }}</td>
+                        <td>{{ apartmentCost.costName }}</td>
+                        <td>{{ apartmentCost.costType }}</td>
+                        <td>{{ apartmentCost.quantity }}</td>
+                        <td>{{ apartmentCost.price|number_format }} €</td>
+                        <td>{{ apartmentCost.total|number_format }} €</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% elseif title == 'Auto' %}
     <br>
@@ -197,9 +215,13 @@
         <br>
         <form action="" method="post">
             <div class="row" id="insertDbForm">
-                <div class="col-6 col-lg-3">
+                <div class="col-6 col-lg-2">
                     <label for="date" class="form-label">Datum*</label>
                     <input type="date" class="form-control" name="date[]" id="date" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="costName" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="costName[]" id="costName" placeholder="Optional">
                 </div>
                 <div class="col-6 col-lg-3">
                     <label for="costType" class="form-label">Art der Kosten*</label>
@@ -209,11 +231,11 @@
                         <option value="otherCosts">Sonstiges</option>
                     </select>
                 </div>
-                <div class="col-6 col-lg-3">
+                <div class="col-6 col-lg-2">
                     <label for="quantity" class="form-label">Menge*</label>
                     <input type="text" class="form-control" name="quantity[]" id="quantity" required>
                 </div>
-                <div class="col-6 col-lg-3">
+                <div class="col-6 col-lg-2">
                     <label for="price" class="form-label">Kosten*</label>
                     <input type="number" step="0.01" class="form-control" name="price[]" id="price" required>
                 </div>
@@ -230,26 +252,32 @@
         <br>
     </div>
     <div class="container bg-dark rounded mt-2 pb-2">
-        <table class="table table-dark table-striped table-hover">
-            <thead class="">
-            <tr>
-                <th scope="col">Datum</th>
-                <th scope="col">Art der Kosten</th>
-                <th scope="col">Menge</th>
-                <th scope="col">Kosten</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for carCost in carCosts %}
+        <div class="table-responsive">
+            <table class="table table-dark table-striped table-hover">
+                <thead>
                 <tr>
-                    <th scope="row">{{ carCost.date }}</th>
-                    <th>{{ carCost.costType }}</th>
-                    <th>{{ carCost.quantity }}</th>
-                    <th>{{ carCost.price }}</th>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Art der Kosten</th>
+                    <th scope="col">Menge</th>
+                    <th scope="col">Kosten</th>
+                    <th scope="col">Gesamtpreis</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for carCost in carCosts %}
+                    <tr>
+                        <td>{{ carCost.date }}</td>
+                        <td>{{ carCost.costName }}</td>
+                        <td>{{ carCost.costType }}</td>
+                        <td>{{ carCost.quantity }}</td>
+                        <td>{{ carCost.price|number_format }} €</td>
+                        <td>{{ carCost.total|number_format }} €</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% elseif title == 'Dienstleistungen' %}
     <br>
@@ -264,7 +292,7 @@
                     <input type="date" class="form-control" name="date[]" id="date" required>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <label for="serviceName" class="form-label">Dienstleistung*</label>
+                    <label for="serviceName" class="form-label">Name Dienstleistung*</label>
                     <input type="text" class="form-control" name="serviceName[]" id="serviceName" required>
                 </div>
                 <div class="col-6 col-lg-3">
@@ -289,35 +317,99 @@
         <br>
     </div>
     <div class="container bg-dark rounded mt-2 pb-2">
-        <table class="table table-dark table-striped table-hover">
-            <thead class="">
-            <tr>
-                <th scope="col">Datum</th>
-                <th scope="col">Dienstleistung</th>
-                <th scope="col">Art der Dienstleistung</th>
-                <th scope="col">Kosten</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for serviceCost in serviceCosts %}
+        <div class="table-responsive">
+            <table class="table table-dark table-striped table-hover">
+                <thead>
                 <tr>
-                    <th scope="row">{{ serviceCost.date }}</th>
-                    <th>{{ serviceCost.serviceName }}</th>
-                    <th>{{ serviceCost.serviceType }}</th>
-                    <th>{{ serviceCost.price }}</th>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Name Dienstleistung</th>
+                    <th scope="col">Art der Dienstleistung</th>
+                    <th scope="col">Kosten</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for serviceCost in serviceCosts %}
+                    <tr>
+                        <td>{{ serviceCost.date }}</td>
+                        <td>{{ serviceCost.serviceName }}</td>
+                        <td>{{ serviceCost.serviceType }}</td>
+                        <td>{{ serviceCost.price|number_format }} €</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% elseif title == 'Sonstige Kosten' %}
+    <br>
+    <div class="container bg-dark text-light rounded">
+        <br>
+        <h1> {{ title }}</h1>
+        <br>
+        <form action="" method="post">
+            <div class="row" id="insertDbForm">
+                <div class="col-6 col-lg-3">
+                    <label for="date" class="form-label">Datum*</label>
+                    <input type="date" class="form-control" name="date[]" id="date" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="costName" class="form-label">Name*</label>
+                    <input type="text" class="form-control" name="costName[]" id="costName" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="quantity" class="form-label">Menge*</label>
+                    <input type="text" class="form-control" name="quantity[]" id="quantity" required>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <label for="price" class="form-label">Kosten*</label>
+                    <input type="number" step="0.01" class="form-control" name="price[]" id="price" required>
+                </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-link col-6 col-lg-2" id="addRow">Reihe hinzufügen</button>
+            <br>
+            <br>
+            <a href="index.php">
+                <button type="button" class="btn bg-primary text-light ">Zurück</button>
+            </a>
+            <button type="submit" class="btn bg-green text-light float-end">Absenden</button>
+        </form>
+        <br>
+    </div>
+    <div class="container bg-dark rounded mt-2 pb-2">
+        <div class="table-responsive">
+            <table class="table table-dark table-striped table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Menge</th>
+                    <th scope="col">Kosten</th>
+                    <th scope="col">Gesamtpreis</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for otherCost in otherCosts %}
+                    <tr>
+                        <td>{{ otherCost.date }}</td>
+                        <td>{{ otherCost.costName }}</td>
+                        <td>{{ otherCost.quantity }}</td>
+                        <td>{{ otherCost.price|number_format }} €</td>
+                        <td>{{ otherCost.total|number_format }} €</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endif %}
 <script>
-//Add Row to Form
-$(document).ready(function () {
-    $("#addRow").click(function () {
-        $('#insertDbForm').clone(true).insertAfter('#insertDbForm');
-        return false;
+    //Add Row to Form
+    $(document).ready(function () {
+        $("#addRow").click(function () {
+            $('#insertDbForm').clone(true).insertAfter('#insertDbForm');
+            return false;
+        });
     });
-});
 </script>
 {% include('./footer.twig') %}

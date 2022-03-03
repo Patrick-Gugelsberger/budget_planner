@@ -2,7 +2,6 @@
 
 namespace Midnox\Controller;
 
-use Midnox\Model\ApartmentModel;
 use PDO;
 use Midnox\Model\ApartmentModel as Apartment;
 
@@ -15,9 +14,15 @@ class ApartmentController
         $this->pdo = $pdo;
     }
 
-    public function fetchChartData($beginDate, $endDate)
+    
+    /**
+     * @param string $beginDate
+     * @param string $endDate
+     * @return Apartment[]
+     */
+    public function fetchChartData(string $beginDate, string $endDate): array
     {
-        $sql = sprintf('SELECT costType, price FROM apartment WHERE date >= %s AND date <= %s', $beginDate, $endDate);
+        $sql = sprintf('SELECT costType, quantity, price FROM apartment WHERE date >= %s AND date <= %s', $beginDate, $endDate);
         $result = $this->pdo->query($sql);
 
         return $result->fetchAll(PDO::FETCH_CLASS, Apartment::class);
@@ -66,12 +71,13 @@ class ApartmentController
 
         for ($i = 0; $i < $count; $i++) {
             $date = $_POST['date'][$i];
+            $costName = $_POST['costName'][$i];
             $costType = $_POST['costType'][$i];
             $quantity = $_POST['quantity'][$i];
             $price = $_POST['price'][$i];
 
-            $sql = 'INSERT INTO apartment (date, costType, quantity, price) VALUES (?,?,?,?)';
-            $this->pdo->prepare($sql)->execute([$date, $costType, $quantity, $price]);
+            $sql = 'INSERT INTO apartment (date, costName, costType, quantity, price) VALUES (?,?,?,?,?)';
+            $this->pdo->prepare($sql)->execute([$date, $costName, $costType, $quantity, $price]);
         }
     }
 }

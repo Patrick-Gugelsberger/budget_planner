@@ -56,7 +56,7 @@ class ProductController
      */
     public function fetchChartData(string $startDate, string $endDate):array
     {
-        $sql = sprintf('SELECT productType, price FROM product WHERE date >= %s AND date <= %s', $startDate, $endDate);
+        $sql = sprintf('SELECT productType, quantity, price FROM product WHERE date >= %s AND date <= %s', $startDate, $endDate);
         $result = $this->pdo->query($sql);
 
         return $result->fetchAll(PDO::FETCH_ASSOC);

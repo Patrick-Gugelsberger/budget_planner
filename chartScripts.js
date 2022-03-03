@@ -8,22 +8,27 @@ let response = $.ajax({
 //parse JSON String to turn into object
 let data = JSON.parse(response.responseText);
 
+//set Variable used for all Charts
+let total = 0;
+
 //set Variables to calculate costs per productType
 let sweets = 0;
 let food = 0;
 let hygiene = 0;
 
+
 //calculate costs per productType
 data['product'].forEach(product => {
+    total = product['quantity'] * product['price'];
         switch (product['productType']) {
             case 'sweets':
-                sweets = sweets + product['price'];
+                sweets = sweets + total;
                 break;
             case 'food':
-                food = food + product['price'];
+                food = food + total;
                 break;
             case 'hygiene':
-                hygiene = hygiene + product['price'];
+                hygiene = hygiene + total;
                 break;
         }
     }
@@ -36,15 +41,16 @@ let otherApartmentCosts = 0;
 
 //calculate costs per apartmentType
 data['apartment'].forEach(apartment => {
+    total = apartment['quantity'] * apartment['price'];
     switch (apartment['costType']) {
         case 'rent':
-            rent = rent + apartment['price'];
+            rent = rent + total;
             break;
         case 'furniture':
-            furniture = furniture + apartment['price'];
+            furniture = furniture + total;
             break;
         case 'otherCosts':
-            otherApartmentCosts = otherApartmentCosts + apartment['price'];
+            otherApartmentCosts = otherApartmentCosts + total;
             break;
     }
 })
@@ -56,15 +62,16 @@ let otherCarCosts = 0;
 
 //calculate costs per carType
 data['car'].forEach(car => {
+    total = car['quantity'] * car['price'];
     switch (car['costType']) {
         case 'fuel':
-            fuel = fuel + car['price'];
+            fuel = fuel + total;
             break;
         case 'repairs':
-            repairs = repairs + car['price'];
+            repairs = repairs + total;
             break;
         case 'otherCosts':
-            otherCarCosts = otherCarCosts + car['price'];
+            otherCarCosts = otherCarCosts + total;
             break;
     }
 })

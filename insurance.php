@@ -14,4 +14,5 @@ echo $twig->render('record.twig', array(
 
 if (!empty($_POST['date'])) {
     $insuranceController->addInsurances();
+    echo "<meta http-equiv='refresh' content='0'>";
 }

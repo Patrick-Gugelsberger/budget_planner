@@ -5,3 +5,4 @@ logs/**
 todo.txt
 node_modules/**
 package-lock.json
+config/database.db

@@ -4,72 +4,128 @@ namespace Midnox\Model;
 
 class CarModel
 {
-    public $date;
-    public $costType;
-    public $price;
-    public $quantity;
+    public string $date;
+    public string $costName;
+    public string $costType;
+    public int $quantity;
+    public float $price;
+    public float $total;
+    
 
     /**
-     * @return mixed
-     */
-    public function getDate()
+     * Get the value of date
+     */ 
+    public function getDate(): string
     {
         return $this->date;
     }
 
     /**
-     * @param mixed $date
-     */
+     * Set the value of date
+     *
+     * @return  self
+     */ 
     public function setDate($date)
     {
         $this->date = $date;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
-    public function getCostType()
+     * Get the value of costName
+     */ 
+    public function getCostName(): string
+    {
+        return $this->costName;
+    }
+
+    /**
+     * Set the value of costName
+     *
+     * @return  self
+     */ 
+    public function setCostName($costName)
+    {
+        $this->costName = $costName;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of costType
+     */ 
+    public function getCostType(): string
     {
         return $this->costType;
     }
 
     /**
-     * @param mixed $costType
-     */
+     * Set the value of costType
+     *
+     * @return  self
+     */ 
     public function setCostType($costType)
     {
         $this->costType = $costType;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @param mixed $pice
-     */
-    public function setPrice($price)
-    {
-        $this->pice = $price;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getQuantity()
+     * Get the value of quantity
+     */ 
+    public function getQuantity(): int
     {
         return $this->quantity;
     }
 
     /**
-     * @param mixed $quantity
-     */
+     * Set the value of quantity
+     *
+     * @return  self
+     */ 
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+
+        return $this;
     }
+
+    /**
+     * Get the value of price
+     */ 
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set the value of price
+     *
+     * @return  self
+     */ 
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTotal(): float
+    {
+        return $this->quantity * $this->price;
+    }
+
+    /**
+     * @param float $total
+     */
+    public function setTotal(float $total): void
+    {
+        $this->total = $total;
+    }
+
 }
